@@ -36,7 +36,7 @@ def contact():
         email=request.form['email']
         message=request.form['message']
         cursor=db.cursor()
-        sql="INSERT INTO flask_tbl(name,email,message) VALUES(%s,%s,%s)"
+        sql="INSERT INTO contact(name,email,message) VALUES(%s,%s,%s)"
         val=(name,email,message)
         cursor.execute(sql,val)
         db.commit()
