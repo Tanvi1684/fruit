@@ -1,13 +1,10 @@
 from flask import Flask,render_template,request,url_for
-import mysql.connector
+import psycopg2
 app=Flask(__name__,template_folder='templates')
 
 
-db=mysql.connector.connect(
-    host="localhost",
-    user="root",
-    passwd="",
-    database="python_db"
+db=psycopg2.connect(
+   "postgresql://fruit_7jsu_user:c7UNWUBY5zIxPUDJxaGF4J8cRUcKI7i3@dpg-d7n0jfpkh4rs73aun8f0-a.oregon-postgres.render.com/fruit_7jsu"
 )
 
 @app.route('/')
