@@ -1,14 +1,14 @@
 from flask import Flask,render_template,request,url_for
-#import mysql.connector
+import mysql.connector
 app=Flask(__name__,template_folder='templates')
 
 
-#db=mysql.connector.connect(
- #   host="localhost",
-  #  user="root",
-   # passwd="",
-    #database="python_db"
-#)
+db=mysql.connector.connect(
+    host="localhost",
+    user="root",
+    passwd="",
+    database="python_db"
+)
 
 @app.route('/')
 def index():
@@ -32,14 +32,14 @@ def testimonial():
 @app.route('/contact',methods=['GET','POST'])
 def contact():
     if request.method=='POST':
-       # name=request.form['name']
-        #email=request.form['email']
-        #message=request.form['message']
-        #cursor=db.cursor()
-        #sql="INSERT INTO flask_tbl(name,email,message) VALUES(%s,%s,%s)"
-        #val=(name,email,message)
-        #cursor.execute(sql,val)
-        #db.commit()
+        name=request.form['name']
+        email=request.form['email']
+        message=request.form['message']
+        cursor=db.cursor()
+        sql="INSERT INTO flask_tbl(name,email,message) VALUES(%s,%s,%s)"
+        val=(name,email,message)
+        cursor.execute(sql,val)
+        db.commit()
         return "successed"
 
     return render_template('contact.html')
